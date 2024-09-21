@@ -1490,7 +1490,7 @@ export default function Installationfile() {
                 />
               </div>
             </div>
-            <div style={{ backgroundColor: "#1a1a1a", paddingBottom: "20px" }}>
+            <div style={{ backgroundColor: "#1a1a1a", paddingBottom: "20px",paddingRight:"20px" }}>
               <div style={{ marginBottom: "20px", textAlign: "center" }}>
                 <input
                   type="text"
