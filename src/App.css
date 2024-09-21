@@ -1,38 +1,344 @@
-.App {
-  text-align: center;
+* {
+  scrollbar-width: none;
+  margin: 0;
+  font-family: "SUSE", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.home-bg {
+  background-image: linear-gradient(
+      to right,
+      rgba(7, 7, 7, 0.47),
+      rgba(3, 3, 3, 0.774)
+    ),
+    url("https://orig00.deviantart.net/e9d3/f/2016/339/5/9/animated_star_background_stock_by_firstdarkangel2001-daqohse.gif");
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+Button:focus {
+  color: white !important;
+  background: linear-gradient(to right, #007bff, #00bfff) !important;
+  transform: scale(0.9) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*Cards Effect*/
+.language-cards-bg-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.language-cards-bg-effect {
+  position: relative;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.language-cards-bg-effect::before {
+  right: 0;
+}
+/*Menu drop down effects*/
+.menu-drop-button {
+  position: relative;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 50px;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.menu-drop-button:hover {
+  transform: scale(1.05);
+  color: #fff;
+}
+
+.menu-drop-button:active {
+  transform: scale(0.9);
+}
+
+.menu-drop-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #007bff, #00bfff);
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.menu-drop-button:hover::before {
+  right: 0;
+}
+/* From Uiverse.io by Deri-Kurniawan */
+.button {
+  position: relative;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 50px;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  transform: scale(0.9);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #007bff, #00bfff);
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+  border-radius: 50px;
+}
+
+.button:hover::before {
+  right: 0;
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  width: auto;
+}
+
+.code-editor {
+  background-color: #2d2d2d;
+  color: #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+.contact-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form .form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-form .form-input:focus {
+  border-color: #66afe9;
+  outline: none;
+}
+
+.contact-form .form-button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form .form-button:hover {
+  background-color: #0056b3;
+}
+.contact-img {
+  background-image: url("https://images.pexels.com/photos/1526713/pexels-photo-1526713.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(90%);
+}
+
+.list-item:focus {
+  background-color: #006666 !important;
+  color: white !important;
+}
+/*Footer styling code*/
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  width: auto;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+  flex: 1;
+  margin: 10px;
+}
+
+.footer-left h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer-middle ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-middle ul li {
+  margin: 5px 0;
+}
+
+.footer-middle ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-right .social-icons a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.footer-right .social-icons a:hover {
+  color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.tab-bgs:hover {
+  background-color: transparent !important;
+}
+.tab-bgs:focus {
+  background-color: transparent !important;
+}
+
+/*Mobile responsive properties*/
+@media (max-width: 768px) {
+  .menu-button-res {
+    display: block;
+  }
+  .button-without-res {
+    display: none;
+  }
+  .tabs-res {
+    display: block;
+  }
+  .tabs-without-res {
+    display: none;
+  }
+  .installation-page-render {
+    width: 90vw !important;
+  }
+  .about {
+    overflow-y: auto;
+  }
+  .about-card-res {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 90% !important;
+  }
+  .remove-img-res {
+    display: none !important;
+  }
+  .contact-img {
+    display: none !important;
+  }
+  .contact-bg-res {
+    width: auto !important;
+  }
+
+  .h1-size-res {
+    font-size: 40px !important;
+  }
+  .welcome-box-res {
+    width: 300px !important;
+  }
+  .installation-page {
+    width: 90vw !important;
+  }
+  .language-cards-res {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .language-cards-grid-res {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+  }
+  .language-cards-bg-effect {
+    width: 300px !important;
+  }
+  .input-bg-res{
+    background: linear-gradient(to right, #007bff6d, #00bfff71) !important;
   }
 }

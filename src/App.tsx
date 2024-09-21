@@ -1,15 +1,21 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import './App.css';
 import Projectpage from "./component/Projectpage"
 =======
 import logo from './logo.svg';
 import './App.css';
 >>>>>>> f44a73f (Initialize project using Create React App)
+=======
+import './App.css';
+import Installationfile from './component/Installationfile';
+>>>>>>> 59487eb (added changes)
 
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <Projectpage/>
 =======
@@ -28,6 +34,9 @@ function App() {
         </a>
       </header>
 >>>>>>> f44a73f (Initialize project using Create React App)
+=======
+      <Installationfile/>
+>>>>>>> 59487eb (added changes)
     </div>
   );
 }
