@@ -1490,7 +1490,7 @@ export default function Installationfile() {
                 />
               </div>
             </div>
-            <div style={{ backgroundColor: "#1a1a1a", paddingBottom: "20px",paddingRight:"20px" }}>
+            <div style={{ backgroundColor: "#1a1a1a", paddingBottom: "20px",paddingRight:"40px" }}>
               <div style={{ marginBottom: "20px", textAlign: "center" }}>
                 <input
                   type="text"
@@ -1614,7 +1614,7 @@ export default function Installationfile() {
                   alignItems: "center",
                   padding: "20px",
                   boxShadow: "0px 0.2px 1px 0px gray",
-                  marginTop: "20px",
+                  marginTop: "40px",
                   backgroundColor: "#e6ffff",
                   color: "black",
                   height: "400px",
@@ -2004,7 +2004,7 @@ export default function Installationfile() {
                   style={{
                     height: "100vh",
                     overflowY: "auto",
-                    width: "90vw",
+                    width: "85vw",
                   }}
                 >
                   {installationRenderSection()}
