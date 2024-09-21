@@ -27,19 +27,33 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
 const colors = [
-  "#FFDDC1",
-  "#C1FFD7",
-  "#FFC2C1",
-  "#FFDFD3",
-  "#C1E1FF",
-  "#C1FFD7",
-  "#FFE1C1",
-  "#FFC1F1",
-  "#D3C1FF",
+  "#87CEFA", // Light Sky Blue
+  "#F08080", // Light Coral
+  "#FAFAD2", // Light Goldenrod Yellow
+  "#90EE90", // Light Green
 ];
+
 const ITEM_HEIGHT = 48;
 export default function Installationfile() {
-  const [languageData] = useState(LanguageJSData);
+  const [searchTerm, setSearchTerm] = useState(""); // state for search input
+
+  // Function to filter language data based on the search term
+  const filteredData = LanguageJSData
+    .map((data) => ({
+      ...data,
+      subcategories: data.subcategories.map((subcategoryData) => ({
+        ...subcategoryData,
+        items: subcategoryData.items.filter((item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        ),
+      })),
+    }))
+    .filter((data) =>
+      data.subcategories.some(
+        (subcategoryData) => subcategoryData.items.length > 0
+      )
+    );
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -1476,95 +1490,107 @@ export default function Installationfile() {
                 />
               </div>
             </div>
-            <div
-              className="language-cards-res"
-              style={{ backgroundColor: "#1a1a1a" }}
-            >
-              {languageData &&
-                languageData.map((data, index) => {
-                  return (
-                    <div style={{ color: "#ffff80", textAlign: "center" }}>
+            <div style={{ backgroundColor: "#1a1a1a", paddingBottom: "20px" }}>
+              <div style={{ marginBottom: "20px", textAlign: "center" }}>
+                <input
+                  type="text"
+                  placeholder="Search by name"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  style={{
+                    marginTop:"10px",
+                    padding: "10px",
+                    width: "60%",
+                    fontSize: "16px",
+                    borderRadius: "5px",
+                    border: "1px solid #ffff80",
+                    outlineColor: "",
+                    background:
+                      "linear-gradient(to right, #007bff6d, #00bfff71)",
+                    color: "white",
+                  }}
+                />
+              </div>
+
+              {filteredData.map((data, index) => (
+                <div
+                  key={index}
+                  style={{ color: "#ffff80", textAlign: "center" }}
+                >
+                  <h1
+                    style={{
+                      fontSize: "55px",
+                      fontFamily: "Righteous",
+                      padding: "20px",
+                    }}
+                  >
+                    {data.category}
+                  </h1>
+                  {data.subcategories.map((subcategoryData, subIndex) => (
+                    <div key={subIndex}>
                       <h1
                         style={{
-                          fontSize: "55px",
-                          fontFamily: "Righteous",
-                          padding: "20px",
+                          margin: "20px",
+                          fontFamily: "SUSE",
+                          width: "auto",
                         }}
                       >
-                        {data.category}
+                        {subcategoryData.name}
                       </h1>
-                      {data.subcategories.map((subcategoryData) => {
-                        return (
-                          <div>
-                            <h1
-                              style={{
-                                margin: "20px",
-                                fontFamily: "SUSE",
-                                width: "auto",
-                              }}
-                            >
-                              {subcategoryData.name}
-                            </h1>
-                            <ul>
-                              <div
-                                className="language-cards-grid-res"
-                                style={{
-                                  display: "grid",
-                                  gridTemplateColumns: "repeat(5, 1fr)",
-                                  gap: "20px",
-                                }}
-                              >
-                                {subcategoryData.items.map((item, itmIndex) => {
-                                  return (
-                                    <div>
-                                      <Box>
-                                        <a
-                                          style={{
-                                            textDecoration: "none",
-                                            color: "black",
-                                          }}
-                                          href={item.link}
-                                        >
-                                          <Card
-                                            className="language-cards-bg-effect"
-                                            key={subcategoryData.id}
-                                            sx={{
-                                              width: "250px",
-                                              height: "100px",
-                                              padding: "10px",
-                                              backgroundColor:
-                                                colors[
-                                                  itmIndex % colors.length
-                                                ],
-                                              textAlign: "center",
-                                              display: "flex",
-                                              justifyContent: "center",
-                                              flexDirection: "column",
-                                              alignItems: "center",
-                                            }}
-                                            variant="outlined"
-                                          >
-                                            <h2
-                                              style={{
-                                                fontFamily: "Righteous",
-                                              }}
-                                            >
-                                              {item.name}
-                                            </h2>
-                                          </Card>
-                                        </a>
-                                      </Box>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </ul>
-                          </div>
-                        );
-                      })}
+                      <ul>
+                        <div
+                          className="language-cards-grid-res"
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(5, 1fr)",
+                            gap: "20px",
+                          }}
+                        >
+                          {subcategoryData.items.map((item, itmIndex) => (
+                            <div key={item.id}>
+                              <Box>
+                                <a
+                                  style={{
+                                    textDecoration: "none",
+                                    color: "black",
+                                  }}
+                                  href={item.link}
+                                >
+                                  <Card
+                                    className="language-cards-bg-effect"
+                                    sx={{
+                                      width: "250px",
+                                      height: "100px",
+                                      padding: "10px",
+                                      backgroundColor:
+                                        colors[itmIndex % colors.length],
+                                      textAlign: "center",
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      flexDirection: "column",
+                                      alignItems: "center",
+                                    }}
+                                    variant="outlined"
+                                  >
+                                    <img
+                                      style={{ width: "40px" }}
+                                      src={item.logo}
+                                      alt=""
+                                    />
+                                    <h2 style={{ fontFamily: "Righteous" }}>
+                                      {item.name}
+                                    </h2>
+                                  </Card>
+                                </a>
+                              </Box>
+                            </div>
+                          ))}
+                        </div>
+                      </ul>
                     </div>
-                  );
-                })}
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         );
