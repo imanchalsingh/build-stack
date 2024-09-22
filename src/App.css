@@ -265,7 +265,7 @@ pre {
   color: #ddd;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     text-align: center;
@@ -280,7 +280,7 @@ pre {
 }
 
 /*Mobile responsive properties*/
-@media (max-width: 400px) {
+@media (max-width: 768px) {
   .menu-button-res {
     display: block;
   }
@@ -336,7 +336,7 @@ pre {
     grid-template-columns: none !important;
   }
   .language-cards-bg-effect {
-    width: 300px !important;
+    width: 250px !important;
   }
   .input-bg-res {
     background: linear-gradient(to right, #007bff6d, #00bfff71) !important;
