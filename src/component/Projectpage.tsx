@@ -6,8 +6,6 @@ import {
   Typography,
   Box,
   Checkbox,
-  AppBar,
-  Toolbar,
   Container,
   CssBaseline,
 } from "@mui/material";
