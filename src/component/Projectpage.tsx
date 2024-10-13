@@ -1,17 +1,22 @@
 // E-LearningPlatform.tsx
 import React, { useState } from "react";
 import {
-  Button,
-  Card,
-  Typography,
   Box,
+  CssBaseline,
+  Typography,
+  List,
+  ListItemButton,
+  ListItemText,
+  Divider,
+  Tab,
+  Tabs,
+  Button,
   Checkbox,
   Container,
-  CssBaseline,
 } from "@mui/material";
-import { Provider, useSelector, useDispatch } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { createStore } from "redux";
-import { Document, Page, Text, pdf } from "@react-pdf/renderer";
+import { pdf, Document, Page, Text } from "@react-pdf/renderer";
 import DownloadIcon from "@mui/icons-material/Download";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -23,7 +28,6 @@ type Course = {
   quizzes: QuizQuestion[];
 };
 type QuizQuestion = { question: string; options: string[]; answer: string };
-type Progress = { completedModules: number; totalModules: number };
 
 // Initial State
 const initialState = {
@@ -201,8 +205,8 @@ const initialState = {
         {
           question:
             "What will be the output of the following code: System.out.println(10 + 20 + '30');?",
-          options: ["1030", "30", "102030"],
-          answer: "1030",
+          options: ["65", "30", "102030"],
+          answer: "102030",
         },
         {
           question: "How do you declare a constant in Java?",
@@ -468,6 +472,7 @@ const initialState = {
           ],
           answer: "val array = arrayOf(1, 2, 3)",
         },
+
         {
           question: "Which keyword is used for null safety in Kotlin?",
           options: ["!!", "?", "null"],
@@ -988,36 +993,309 @@ const initialState = {
         },
       ],
     },
+
+    {
+      id: 15,
+      title: 'Swift for iOS Development',
+      description: 'Learn Swift programming for iOS development.',
+      quizzes: [
+          {
+              question: "What is the file extension for Swift files?",
+              options: [".swift", ".sw", ".ios"],
+              answer: ".swift",
+          },
+          {
+              question: "How do you declare a variable in Swift?",
+              options: ["var variableName", "let variableName", "Both"],
+              answer: "Both",
+          },
+          {
+              question: "What does the keyword 'let' signify in Swift?",
+              options: ["Immutable variable", "Mutable variable", "Constant function"],
+              answer: "Immutable variable",
+          },
+          {
+              question: "How do you define a function in Swift?",
+              options: ["func functionName() {}", "def functionName() {}", "function functionName()"],
+              answer: "func functionName() {}",
+          },
+          {
+              question: "What is the purpose of Optionals in Swift?",
+              options: ["Handle null values safely", "Optimize code", "Increase performance"],
+              answer: "Handle null values safely",
+          },
+          {
+              question: "Which keyword is used to create a class in Swift?",
+              options: ["class", "struct", "object"],
+              answer: "class",
+          },
+          {
+              question: "How do you unwrap an optional in Swift?",
+              options: ["Using '!' operator", "Using '?' operator", "Using '*' operator"],
+              answer: "Using '!' operator",
+          },
+          {
+              question: "What is the purpose of closures in Swift?",
+              options: ["Anonymous functions", "Declare constants", "Define classes"],
+              answer: "Anonymous functions",
+          },
+          {
+              question: "Which framework is commonly used for UI development in iOS?",
+              options: ["UIKit", "SwiftUI", "Both"],
+              answer: "Both",
+          },
+          {
+              question: "How do you create an array in Swift?",
+              options: ["let array = [1, 2, 3]", "array(1, 2, 3)", "List(1, 2, 3)"],
+              answer: "let array = [1, 2, 3]",
+          },
+      ],
+  },
+  {
+      id: 16,
+      title: 'Go Programming for Backend Development',
+      description: 'Learn Go programming for efficient backend development.',
+      quizzes: [
+          {
+              question: "What is the file extension for Go files?",
+              options: [".go", ".golang", ".g"],
+              answer: ".go",
+          },
+          {
+              question: "Which keyword is used to declare a variable in Go?",
+              options: ["var", "let", "const"],
+              answer: "var",
+          },
+          {
+              question: "How do you define a function in Go?",
+              options: ["func functionName() {}", "function functionName() {}", "def functionName()"],
+              answer: "func functionName() {}",
+          },
+          {
+              question: "Which package is used by default in every Go program?",
+              options: ["main", "fmt", "utils"],
+              answer: "main",
+          },
+          {
+              question: "What does the keyword 'defer' do in Go?",
+              options: ["Delays execution until the function returns", "Stops execution", "Creates a new variable"],
+              answer: "Delays execution until the function returns",
+          },
+          {
+              question: "How do you import packages in Go?",
+              options: ["import 'fmt'", "import fmt", "import \"fmt\""],
+              answer: "import \"fmt\"",
+          },
+          {
+              question: "What does the ':=’ symbol do in Go?",
+              options: ["Short variable declaration", "Assignment", "Comparison"],
+              answer: "Short variable declaration",
+          },
+          {
+              question: "Which data structure is commonly used for key-value storage in Go?",
+              options: ["Map", "Array", "Slice"],
+              answer: "Map",
+          },
+          {
+              question: "How do you handle errors in Go?",
+              options: ["Error handling", "try-catch", "By returning error values"],
+              answer: "By returning error values",
+          },
+          {
+              question: "Which Go package is used for concurrency?",
+              options: ["sync", "concurrent", "goroutine"],
+              answer: "sync",
+          },
+      ],
+  },
+  {
+      id: 17,
+      title: 'Kotlin for Android Development',
+      description: 'Learn Kotlin programming for Android application development.',
+      quizzes: [
+          {
+              question: "What is the file extension for Kotlin files?",
+              options: [".kt", ".kotlin", ".k"],
+              answer: ".kt",
+          },
+          {
+              question: "How do you define a variable in Kotlin?",
+              options: ["var variableName", "let variableName", "define variableName"],
+              answer: "var variableName",
+          },
+          {
+              question: "What does 'val' signify in Kotlin?",
+              options: ["Immutable variable", "Mutable variable", "Constant function"],
+              answer: "Immutable variable",
+          },
+          {
+              question: "How do you create a function in Kotlin?",
+              options: ["fun functionName() {}", "def functionName() {}", "function functionName()"],
+              answer: "fun functionName() {}",
+          },
+          {
+              question: "What is the purpose of null safety in Kotlin?",
+              options: ["Avoid null pointer exceptions", "Increase performance", "Optimize code"],
+              answer: "Avoid null pointer exceptions",
+          },
+          {
+              question: "Which keyword is used to create a class in Kotlin?",
+              options: ["class", "object", "struct"],
+              answer: "class",
+          },
+          {
+              question: "How do you declare a list in Kotlin?",
+              options: ["listOf(1, 2, 3)", "array(1, 2, 3)", "List(1, 2, 3)"],
+              answer: "listOf(1, 2, 3)",
+          },
+          {
+              question: "What is a data class in Kotlin?",
+              options: ["Class for storing data", "Class for UI", "Class for network operations"],
+              answer: "Class for storing data",
+          },
+          {
+              question: "Which Kotlin extension is used for Android UI?",
+              options: ["KTX", "Anko", "UIX"],
+              answer: "KTX",
+          },
+          {
+              question: "How do you handle asynchronous programming in Kotlin?",
+              options: ["Coroutines", "Threads", "async-await"],
+              answer: "Coroutines",
+          },
+      ],
+  },
+  {
+      id: 18,
+      title: 'MATLAB for Scientific Computing',
+      description: 'Learn MATLAB for scientific and engineering computations.',
+      quizzes: [
+          {
+              question: "What is the file extension for MATLAB files?",
+              options: [".m", ".matlab", ".mat"],
+              answer: ".m",
+          },
+          {
+              question: "How do you create a script in MATLAB?",
+              options: ["Create .m file", "Create .script file", "Create .mat file"],
+              answer: "Create .m file",
+          },
+          {
+              question: "Which function is used to display output in MATLAB?",
+              options: ["disp()", "print()", "echo()"],
+              answer: "disp()",
+          },
+          {
+              question: "How do you plot a graph in MATLAB?",
+              options: ["plot()", "draw()", "graph()"],
+              answer: "plot()",
+          },
+          {
+              question: "Which command is used to clear the workspace in MATLAB?",
+              options: ["clear", "clc", "clean"],
+              answer: "clear",
+          },
+          {
+              question: "What is a matrix in MATLAB?",
+              options: ["2D array of numbers", "1D list of numbers", "3D array of numbers"],
+              answer: "2D array of numbers",
+          },
+          {
+              question: "How do you load data from a file in MATLAB?",
+              options: ["load('file')", "open('file')", "import('file')"],
+              answer: "load('file')",
+          },
+          {
+              question: "Which function is used for matrix multiplication in MATLAB?",
+              options: ["mtimes()", "multiply()", "matmul()"],
+              answer: "mtimes()",
+          },
+          {
+              question: "How do you create a function in MATLAB?",
+              options: ["function funcName()", "def funcName()", "create funcName()"],
+              answer: "function funcName()",
+          },
+          {
+              question: "Which MATLAB function is used for Fourier Transform?",
+              options: ["fft()", "ft()", "fourier()"],
+              answer: "fft()",
+          },
+      ],
+  },
+  {
+      id: 19,
+      title: 'PHP for Web Development',
+      description: 'Learn PHP for server-side scripting and web development.',
+      quizzes: [
+          {
+              question: "What is the file extension for PHP files?",
+              options: [".php", ".ph", ".html"],
+              answer: ".php",
+          },
+          {
+              question: "How do you start a PHP script?",
+              options: ["<?php", "<script>", "<php>"],
+              answer: "<?php",
+          },
+          {
+              question: "Which symbol is used for variables in PHP?",
+              options: ["$", "#", "&"],
+              answer: "$",
+          },
+          {
+              question: "How do you create a function in PHP?",
+              options: ["function functionName() {}", "def functionName() {}", "fn functionName()"],
+              answer: "function functionName() {}",
+          },
+          {
+              question: "What does 'echo' do in PHP?",
+              options: ["Outputs text", "Creates a variable", "Defines a class"],
+              answer: "Outputs text",
+          },
+          {
+              question: "How do you connect to a MySQL database in PHP?",
+              options: ["mysqli_connect()", "mysql_connect()", "pdo_connect()"],
+              answer: "mysqli_connect()",
+          },
+          {
+              question: "Which superglobal is used to get form data in PHP?",
+              options: ["$_POST", "$POST", "$form"],
+              answer: "$_POST",
+          },
+          {
+              question: "How do you include another file in PHP?",
+              options: ["include('file.php')", "import('file.php')", "require('file.php')"],
+              answer: "include('file.php')",
+          },
+          {
+              question: "What is the purpose of 'session_start()' in PHP?",
+              options: ["Starts a session", "Ends a session", "Logs in a user"],
+              answer: "Starts a session",
+          },
+          {
+              question: "How do you check if a variable is set in PHP?",
+              options: ["isset()", "defined()", "check()"],
+              answer: "isset()",
+          },
+      ],
+  },
   ],
   enrolledCourses: [] as number[],
-  progress: { completedModules: 0, totalModules: 5 } as Progress,
 };
 
-// Actions
+// Actions and Reducer
 const ENROLL_COURSE = "ENROLL_COURSE";
-const COMPLETE_MODULE = "COMPLETE_MODULE";
-
 const enrollCourse = (courseId: number) => ({
   type: ENROLL_COURSE,
   payload: courseId,
 });
-const completeModule = () => ({ type: COMPLETE_MODULE });
 
-// Reducer
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ENROLL_COURSE:
       return {
         ...state,
         enrolledCourses: [...state.enrolledCourses, action.payload],
-      };
-    case COMPLETE_MODULE:
-      return {
-        ...state,
-        progress: {
-          ...state.progress,
-          completedModules: state.progress.completedModules + 1,
-        },
       };
     default:
       return state;
@@ -1035,54 +1313,43 @@ const theme = createTheme({
   },
 });
 
-const CourseCatalog: React.FC<{ onSelectCourse: (course: Course) => void }> = ({
+const CourseList: React.FC<{ onSelectCourse: (course: Course) => void }> = ({
   onSelectCourse,
 }) => {
   const courses = useSelector((state: typeof initialState) => state.courses);
-  const enrolledCourses = useSelector(
-    (state: typeof initialState) => state.enrolledCourses
-  );
-  const dispatch = useDispatch();
-
   return (
-    <Box>
-      <Typography variant="h5" sx={{ mb: 2, fontWeight: "bold" }}>
-        Available Courses
+    <Box
+      sx={{
+        width: "25%",
+        bgcolor: "background.paper",
+        height: "100vh",
+        overflowY: "auto",
+        borderRight: "1px solid #333",
+      }}
+    >
+      <Typography variant="h5" sx={{ p: 2, fontWeight: "bold" }}>
+        Courses
       </Typography>
-      {courses.map((course) => (
-        <Card
-          key={course.id}
-          sx={{ mb: 2, p: 2, display: "flex", justifyContent: "space-between" }}
-        >
-          <Box>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              {course.title}
-            </Typography>
-            <Typography>{course.description}</Typography>
-          </Box>
-          <Box>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                onSelectCourse(course);
-                dispatch(enrollCourse(course.id));
-              }}
-              disabled={enrolledCourses.includes(course.id)}
-              sx={{ alignSelf: "center" }}
-            >
-              {enrolledCourses.includes(course.id) ? "Enrolled" : "Enroll"}
-            </Button>
-          </Box>
-        </Card>
-      ))}
+      <Divider />
+      <List>
+        {courses.map((course) => (
+          <ListItemButton
+            key={course.id}
+            onClick={() => onSelectCourse(course)}
+          >
+            <ListItemText
+              primary={course.title}
+              secondary={course.description}
+            />
+          </ListItemButton>
+        ))}
+      </List>
     </Box>
   );
 };
 
-const QuizComponent: React.FC<{ questions: QuizQuestion[] }> = ({
-  questions,
-}) => {
+const QuizTabs: React.FC<{ questions: QuizQuestion[] }> = ({ questions }) => {
+  const [activeTab, setActiveTab] = useState(0);
   const [userAnswers, setUserAnswers] = useState<string[]>(
     Array(questions.length).fill("")
   );
@@ -1094,9 +1361,7 @@ const QuizComponent: React.FC<{ questions: QuizQuestion[] }> = ({
     setUserAnswers(newAnswers);
   };
 
-  const submitQuiz = () => {
-    setIsSubmitted(true);
-  };
+  const submitQuiz = () => setIsSubmitted(true);
 
   const score = questions.reduce(
     (acc, q, i) => (q.answer === userAnswers[i] ? acc + 1 : acc),
@@ -1104,13 +1369,20 @@ const QuizComponent: React.FC<{ questions: QuizQuestion[] }> = ({
   );
 
   return (
-    <Box sx={{ mt: 3 }}>
-      <Typography variant="h5" sx={{ mb: 2, fontWeight: "bold" }}>
-        Quiz
-      </Typography>
+    <Box sx={{ width: "100%" }}>
+      <Tabs
+        value={activeTab}
+        onChange={(_, newValue) => setActiveTab(newValue)}
+        variant="scrollable"
+        scrollButtons="auto"
+      >
+        {questions.map((_, index) => (
+          <Tab label={`Quiz ${index + 1}`} key={index} />
+        ))}
+      </Tabs>
       {questions.map((q, i) => (
-        <Box key={i} sx={{ mb: 2 }}>
-          <Typography sx={{ mb: 1 }}>{q.question}</Typography>
+        <Box role="tabpanel" hidden={activeTab !== i} sx={{ p: 2 }} key={i}>
+          <Typography variant="h6">{q.question}</Typography>
           {q.options.map((option) => (
             <Box key={option} sx={{ display: "flex", alignItems: "center" }}>
               <Checkbox
@@ -1120,13 +1392,19 @@ const QuizComponent: React.FC<{ questions: QuizQuestion[] }> = ({
               <Typography>{option}</Typography>
             </Box>
           ))}
+          {i === questions.length - 1 && (
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{ mt: 2 }}
+              onClick={submitQuiz}
+            >
+              Submit Quiz
+            </Button>
+          )}
         </Box>
       ))}
-      {!isSubmitted ? (
-        <Button variant="contained" color="secondary" onClick={submitQuiz}>
-          Submit Quiz
-        </Button>
-      ) : (
+      {isSubmitted && (
         <Typography sx={{ mt: 2 }}>
           Quiz Score: {score}/{questions.length}
         </Typography>
@@ -1152,23 +1430,8 @@ const Certificate: React.FC<{ userName: string; courseName: string }> = ({
   </Document>
 );
 
-const ProgressTracker: React.FC = () => {
-  const progress = useSelector((state: typeof initialState) => state.progress);
-  return (
-    <Box sx={{ mt: 3 }}>
-      <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-        Progress Tracker
-      </Typography>
-      <Typography sx={{ mt: 1 }}>
-        {progress.completedModules}/{progress.totalModules} Modules Completed
-      </Typography>
-    </Box>
-  );
-};
-
 const ELearningPlatform: React.FC = () => {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const dispatch = useDispatch();
 
   const handleDownload = async () => {
     if (!selectedCourse) return;
@@ -1183,39 +1446,37 @@ const ELearningPlatform: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
+    <Box sx={{ display: "flex", height: "100vh" }}>
       <CssBaseline />
-      <Typography
-        variant="h3"
-        align="center"
-        sx={{ fontWeight: "bold", mb: 4 }}
-      >
-        E-Learning Platform
-      </Typography>
-      <CourseCatalog onSelectCourse={setSelectedCourse} />
-      {selectedCourse && (
-        <>
-          <QuizComponent questions={selectedCourse.quizzes} />
-          <Button
-            variant="contained"
-            sx={{ mt: 3 }}
-            onClick={() => dispatch(completeModule())}
-          >
-            Complete Module
-          </Button>
-          <ProgressTracker />
-          <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+      <CourseList onSelectCourse={setSelectedCourse} />
+      <Container maxWidth="md" sx={{ py: 4, flexGrow: 1 }}>
+        {selectedCourse ? (
+          <>
+            <Typography
+              variant="h4"
+              align="center"
+              sx={{ fontWeight: "bold", mb: 2 }}
+            >
+              {selectedCourse.title}
+            </Typography>
+            <QuizTabs questions={selectedCourse.quizzes} />
             <Button
-              variant="outlined"
+              variant="contained"
+              color="primary"
               startIcon={<DownloadIcon />}
               onClick={handleDownload}
+              sx={{ mt: 4 }}
             >
               Download Certificate
             </Button>
-          </Box>
-        </>
-      )}
-    </Container>
+          </>
+        ) : (
+          <Typography variant="h6" align="center" sx={{ mt: 4 }}>
+            Select a course from the left panel to start learning.
+          </Typography>
+        )}
+      </Container>
+    </Box>
   );
 };
 
